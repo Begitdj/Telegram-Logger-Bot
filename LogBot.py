@@ -1,4 +1,6 @@
 import telebot
+import time
+import json
 print("Log all mesage from user")
 print("Github:https://github.com/Begitdj/Telegram-Logger-Bot/")
 tokenx = input("Enter bot token:")
@@ -11,13 +13,78 @@ def handle_text(message):
 	print("Chat Title:", message.chat.title) # Имя Чата
 	print("Message Text:", message.text) #Текст
 	print("Message id:", message.message_id)
+	print("Timestamp:", message.date)
+	tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+	print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
 @bot.message_handler(content_types=['sticker'])
-def handle_sticker(msg):
-	print("User Name:", msg.from_user.first_name) #Имя
-	print("User id:", msg.from_user.id) # id пользователя
-	print("Stickerpack url:", msg.sticker.set_name) # Конец url стикер пака
-	print("Sticker id:", msg.sticker.file_id) # id стикера
-	print("Chat Id:", msg.chat.id) # id чата
-	print("Chat Title:", msg.chat.title) # Имя чата
-	print("Message id:", msg.message_id) # id сообщения
+def handle_sticker(message):
+	print("User Name:", message.from_user.first_name) #Имя
+	print("User id:", message.from_user.id) # id пользователя
+	print("Stickerpack url:", message.sticker.set_name) # Конец url стикер пака
+	print("Sticker id:", message.sticker.file_id) # id стикера
+	print("Chat Id:", message.chat.id) # id чата
+	print("Chat Title:", message.chat.title) # Имя чата
+	print("Message id:", message.message_id) # id сообщения
+	print("Sticker emoji:", message.sticker.emoji)
+	tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+	print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+@bot.message_handler(content_types=["document"])
+def handle_files(message):
+	if message.document and message.document.file_id:
+		print("User Name:", message.from_user.first_name) #Имя
+		print("User id:", message.from_user.id) # id пользователя
+		print("Chat Id:", message.chat.id) # Id чата
+		print("Chat Title:", message.chat.title) # Имя Чата
+		print("Message id:", message.message_id)
+		print("Timestamp:", message.date)
+		tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+		print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+		print("Documents id:", message.document.file_id)
+@bot.message_handler(content_types=["photo"])
+def handle_files(message):
+		print("User Name:", message.from_user.first_name) #Имя
+		print("User id:", message.from_user.id) # id пользователя
+		print("Chat Id:", message.chat.id) # Id чата
+		print("Chat Title:", message.chat.title) # Имя Чата
+		print("Message id:", message.message_id)
+		print("Timestamp:", message.date)
+		tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+		print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+		print("Photo json:", *message.photo)
+@bot.message_handler(content_types=["video"])
+def handle_files(message):
+	if message.video and message.video.file_id:
+		print("User Name:", message.from_user.first_name) #Имя
+		print("User id:", message.from_user.id) # id пользователя
+		print("Chat Id:", message.chat.id) # Id чата
+		print("Chat Title:", message.chat.title) # Имя Чата
+		print("Message id:", message.message_id)
+		print("Timestamp:", message.date)
+		tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+		print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+		print("Video id:", message.video.file_id)
+@bot.message_handler(content_types=["audio"])
+def handle_files(message):
+	if message.audio and message.audio.file_id:
+		print("User Name:", message.from_user.first_name) #Имя
+		print("User id:", message.from_user.id) # id пользователя
+		print("Chat Id:", message.chat.id) # Id чата
+		print("Chat Title:", message.chat.title) # Имя Чата
+		print("Message id:", message.message_id)
+		print("Timestamp:", message.date)
+		tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+		print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+		print("Audio id:", message.audio.file_id)
+@bot.message_handler(content_types=["voice"])
+def handle_files(message):
+	if message.voice and message.voice.file_id:
+		print("User Name:", message.from_user.first_name) #Имя
+		print("User id:", message.from_user.id) # id пользователя
+		print("Chat Id:", message.chat.id) # Id чата
+		print("Chat Title:", message.chat.title) # Имя Чата
+		print("Message id:", message.message_id)
+		print("Timestamp:", message.date)
+		tconv = lambda x: time.strftime("%H:%M:%S %d.%m.%Y", time.localtime(x)) #Конвертация даты в читабельный вид
+		print("Time:",tconv(message.date)) # Вывод даты типо 20:58:30 05.07.2020
+		print("voice id:", message.voice.file_id)
 bot.polling(none_stop=True, interval=0)
