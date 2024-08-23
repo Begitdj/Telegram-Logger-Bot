@@ -8,8 +8,6 @@ Document audio and other id logging
 Message Time send
 
 Saving log to file
-
-Logging other bot message
 # Starting
 1.Install the telebot library via Pip 
 2.Download LogBot.py from repository
