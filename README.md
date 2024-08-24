@@ -3,6 +3,7 @@ Python bot using telebot library for logging all messages to console from all ch
 # TODO
 Saving log to file
 Send log to users
+Auto folder creation for download files and other
 # Starting
 1.Install the telebot library via Pip 
 2.Download LogBot.py from repository
