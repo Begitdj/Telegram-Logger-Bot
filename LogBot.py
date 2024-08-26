@@ -21,6 +21,7 @@ if not os.path.exists(direcsave + "documents"):
 	os.mkdir(direcsave + "documents")
 print("Bot starting...")
 bot = telebot.TeleBot(tokenx)
+print("Bot starting! Bot username:", bot.get_me().username)
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
 	print("User Name:", message.from_user.first_name) #Имя
