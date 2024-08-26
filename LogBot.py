@@ -1,12 +1,25 @@
 import telebot
 import time
 import json
+import os
 print("Log all mesage from user")
 print("Github:https://github.com/Begitdj/Telegram-Logger-Bot/")
 tokenx = input("Enter bot token:")
 direcsave = input("Enter Full Directory patch to save photo stickers and other[Example:/other/botsave/]:")
-print("Directory Set! Create in your directory folders with name videos and voice and stickers and photos and music and documents for correct saving without error")
-print("Bot starting.")
+print("Directory Set!l")
+if not os.path.exists(direcsave + "videos"):
+	os.mkdir(direcsave + "videos")
+if not os.path.exists(direcsave + "photos"):
+	os.mkdir(direcsave + "photos")
+if not os.path.exists(direcsave + "voice"):
+	os.mkdir(direcsave + "voice")
+if not os.path.exists(direcsave + "stickers"):
+	os.mkdir(direcsave + "stickers")
+if not os.path.exists(direcsave + "music"):
+	os.mkdir(direcsave + "music")
+if not os.path.exists(direcsave + "documents"):
+	os.mkdir(direcsave + "documents")
+print("Bot starting...")
 bot = telebot.TeleBot(tokenx)
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
